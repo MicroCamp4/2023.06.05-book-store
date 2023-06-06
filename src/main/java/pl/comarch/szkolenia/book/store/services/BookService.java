@@ -22,15 +22,22 @@ public class BookService implements IBookService {
 
     @Override
     public List<Book> getAllBooks() {
-        if(this.sessionData.isLogged()) {
+        return this.bookRepository.getAll();
+        /*if(this.sessionData.isLogged()) {
             return this.bookRepository.getAll();
         }
-        return new ArrayList<>();
+        return new ArrayList<>();*/
     }
 
     @Override
     public List<Book> getBooksByPattern(String pattern) {
-        if(this.sessionData.isLogged()) {
+        return this.bookRepository.getAll().stream()
+                .filter(book -> book.getTitle().toLowerCase()
+                        .contains(pattern.toLowerCase()) ||
+                        book.getAuthor().toLowerCase()
+                                .contains(pattern.toLowerCase()))
+                .toList();
+        /*if(this.sessionData.isLogged()) {
             return this.bookRepository.getAll().stream()
                     .filter(book -> book.getTitle().toLowerCase()
                             .contains(pattern.toLowerCase()) ||
@@ -38,6 +45,6 @@ public class BookService implements IBookService {
                                     .contains(pattern.toLowerCase()))
                     .toList();
         }
-        return new ArrayList<>();
+        return new ArrayList<>();*/
     }
 }
