@@ -1,0 +1,14 @@
+#logo {
+    width: 600px;
+    margin: 30px auto;
+}
+
+#menu {
+    text-align: center;
+}
+
+#content {
+    width: 70%;
+    margin: 10px auto;
+    text-align: center;
+}
